@@ -10,10 +10,10 @@ class ProfileItem extends Component {
     return (
       <div className="card card-body bg-light mb-3">
         <div className="row">
-          <div className="col-3">
+          <div className="col-2">
             <img src={profile.user.avatar} alt="" className="rounded-circle" />
           </div>
-          <div className="col-lg-5 col-md-4 col-8">
+          <div className="col-lg-6 col-md-4 col-8">
             <h3>{profile.user.name}</h3>
             <p>
               {profile.status}{" "}
@@ -26,23 +26,20 @@ class ProfileItem extends Component {
                 <span>{profile.location}</span>
               )}
             </p>
-            <Link to={`profile/${profile.handle}`} className="btn btn-info">
+            <Link to={`/profile/${profile.handle}`} className="btn btn-info">
               View Profile
             </Link>
-            <div
-              style={{ position: "absolute", top: 0, right: 0 }}
-              className=" d-none d-md-block float-right"
-            >
-              <h4>Skill Set</h4>
-              <ul className="list-group">
-                {profile.skills.slice(0, 4).map((skill, index) => (
-                  <li key={index} className="list-group-item">
-                    <i className="fa fa-check pr-1" />
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          </div>
+          <div className="col-md-4 d-none d-md-block">
+            <h4>Skill Set</h4>
+            <ul className="list-group">
+              {profile.skills.slice(0, 4).map((skill, index) => (
+                <li key={index} className="list-group-item">
+                  <i className="fa fa-check pr-1" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
