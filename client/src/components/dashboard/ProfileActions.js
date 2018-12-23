@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function ProfileActions() {
+const ProfileActions = () => {
   return (
     <div className="btn-group mb-4" role="group">
       <Link to="/edit-profile" className="btn btn-light">
@@ -17,6 +17,6 @@ function ProfileActions() {
       </Link>
     </div>
   );
-}
+};
 
 export default ProfileActions;

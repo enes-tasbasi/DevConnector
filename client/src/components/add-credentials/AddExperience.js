@@ -1,30 +1,29 @@
-import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
-import TextFieldGroup from "../common/TextFieldGroup";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { addExperience } from "../../actions/profileActions";
+import React, { Component } from 'react';
+import { Link, withRouter } from 'react-router-dom';
+import TextFieldGroup from '../common/TextFieldGroup';
+import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { addExperience } from '../../actions/profileActions';
 
 class AddExperience extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      company: "",
-      title: "",
-      location: "",
-      from: "",
-      to: "",
+      company: '',
+      title: '',
+      location: '',
+      from: '',
+      to: '',
       current: false,
-      description: "",
+      description: '',
       errors: {},
       disabled: false
     };
 
     this.onChange = this.onChange.bind(this);
-    this.onCheck = this.onCheck.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCheck = this.onCheck.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -71,11 +70,11 @@ class AddExperience extends Component {
               <Link to="/dashboard" className="btn btn-light">
                 Go Back
               </Link>
-              <h1 className="display-4 text-cent">Add Experience</h1>
+              <h1 className="display-4 text-center">Add Experience</h1>
               <p className="lead text-center">
-                Add any job or position that you have had in the past or curren.
+                Add any job or position that you have had in the past or current
               </p>
-              <small className="d-block pb-3">* = Required Fields</small>
+              <small className="d-block pb-3">* = required fields</small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Company"
@@ -92,7 +91,7 @@ class AddExperience extends Component {
                   error={errors.title}
                 />
                 <TextFieldGroup
-                  placeholder="* Location"
+                  placeholder="Location"
                   name="location"
                   value={this.state.location}
                   onChange={this.onChange}
@@ -113,7 +112,7 @@ class AddExperience extends Component {
                   value={this.state.to}
                   onChange={this.onChange}
                   error={errors.to}
-                  disabled={this.state.disabled ? "disabled" : ""}
+                  disabled={this.state.disabled ? 'disabled' : ''}
                 />
                 <div className="form-check mb-4">
                   <input
@@ -125,7 +124,7 @@ class AddExperience extends Component {
                     onChange={this.onCheck}
                     id="current"
                   />
-                  <label className="form-check-label" htmlFor="current">
+                  <label htmlFor="current" className="form-check-label">
                     Current Job
                   </label>
                 </div>
@@ -135,7 +134,7 @@ class AddExperience extends Component {
                   value={this.state.description}
                   onChange={this.onChange}
                   error={errors.description}
-                  info="Tell us about this position"
+                  info="Tell us about the the position"
                 />
                 <input
                   type="submit"
@@ -152,9 +151,9 @@ class AddExperience extends Component {
 }
 
 AddExperience.propTypes = {
+  addExperience: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired,
-  addExperience: PropTypes.func.isRequired
+  errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
@@ -162,7 +161,6 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
-export default connect(
-  mapStateToProps,
-  { addExperience }
-)(withRouter(AddExperience));
+export default connect(mapStateToProps, { addExperience })(
+  withRouter(AddExperience)
+);
